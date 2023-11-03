@@ -1,3 +1,3 @@
-To set up the server, you should activate the virtual environment first by "source venv/bin/activate"
-Then, create the database by "python3 createDataBase.py"
-Finally, start the server by "python3 server.py"
+1. activate the virtual environment first by "source venv/bin/activate" </br>
+2. create the database by "python3 createDataBase.py"</br>
+3. start the server by "python3 server.py"</br>
