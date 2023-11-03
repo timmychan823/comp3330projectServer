@@ -13,12 +13,12 @@ con.execute("""CREATE TABLE IF NOT EXISTS User (
     profile_pic INTEGER
 );""")
 
-con.execute("""CREATE TABLE IF NOT EXISTS Hobbies (
+con.execute("""CREATE TABLE IF NOT EXISTS Hobby (
     user_id INTEGER NOT NULL,
     hobby TEXT NOT NULL
 );""")
 
-con.execute("""CREATE TABLE IF NOT EXISTS Majors (
+con.execute("""CREATE TABLE IF NOT EXISTS Major (
     user_id INTEGER NOT NULL,
     major VARCHAR NOT NULL
 );""")
@@ -48,7 +48,7 @@ con.execute("""CREATE TABLE IF NOT EXISTS Restaurant (
 	restaurant_location TEXT NOT NULL
 );""")
 
-con.execute("""CREATE TABLE IF NOT EXISTS Timeslots (
+con.execute("""CREATE TABLE IF NOT EXISTS Timeslot (
     restaurant_name TEXT NOT NULL,
 	timeslot TEXT NOT NULL
 );""")
