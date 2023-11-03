@@ -29,12 +29,6 @@ con.execute("""CREATE TABLE IF NOT EXISTS ChatRoom (
 	owner2_id INTEGER NOT NULL
 );""")
 
-con.execute("""CREATE TABLE IF NOT EXISTS ChatRoom (
-    chatroom_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-    owner1_id INTEGER NOT NULL,
-	owner2_id INTEGER NOT NULL
-);""")
-
 con.execute("""CREATE TABLE IF NOT EXISTS Message (
     chatroom_id INTEGER NOT NULL,
 	sent_datetime TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
