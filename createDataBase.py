@@ -10,7 +10,7 @@ con.execute("""CREATE TABLE IF NOT EXISTS User (
     email_address TEXT NOT NULL,
     password TEXT NOT NULL,
     year INTEGER NOT NULL,
-    profile_pic INTEGER
+    profile_pic INTEGER NOT NULL
 );""")
 
 con.execute("""CREATE TABLE IF NOT EXISTS Hobby (
