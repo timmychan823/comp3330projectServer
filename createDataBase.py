@@ -53,13 +53,8 @@ con.execute("""CREATE TABLE IF NOT EXISTS Timeslot (
 	timeslot TEXT NOT NULL
 );""")
 
-# insert test data
-testData = [["Timmy","cshtimmy@connect.hku.hk","123456",3]]
-for user in testData:
-    print(user)
-    insertQuery = f"INSERT INTO User (display_name,email_address,password,year) values (\"{user[0]}\",\"{user[1]}\",\"{user[2]}\",{user[3]});" 
-    print(insertQuery)
-    con.execute(insertQuery)
+
+
 con.commit()
 con.close()
 
