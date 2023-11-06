@@ -2,15 +2,20 @@ import flask
 import sqlite3
 from flask import request
 
+import smtplib
+
+from random import seed 
+from random import choice
+
 app = flask.Flask(__name__)
+
 
 @app.route('/login', methods=['GET']) 
 def login():
     email_address = request.args.get('email_address') 
     password = request.args.get('password') 
 
-    print(email_address)
-    print(password)
+
 
     con = sqlite3.connect('my-db.db')
 
@@ -40,8 +45,50 @@ def login():
         "returned_password": userLoginData[0][2]
     }
 
-    print(outdata)
+
 
     return outdata
+
+
+@app.route("/passcode",methods=['GET'])
+def passcode():
+    admin_email_address = "compproject76@gmail.com"
+    admin_password = "umrwznsbzjdicnlp"
+
+    email_address = request.args.get('email_address') 
+
+    seed(1)
+    my_passcode = [str(choice([i for i in range(10)])) for j in range(6)]
+    my_passcode = "".join(my_passcode)
+
+
+    with smtplib.SMTP("smtp.gmail.com",587) as smtp:
+        smtp.ehlo()
+        smtp.starttls()
+        smtp.ehlo()
+
+        
+
+        smtp.login(admin_email_address,admin_password)
+
+        subject = "Verify your account for HKU RiceLegFinder"
+        body = f"passcode: {my_passcode}"
+
+        msg = f"Subject: {subject}\n\n{body}"
+
+        smtp.sendmail(admin_email_address,email_address,msg)
+
+    outdata = {
+        
+        "passcode": my_passcode
+        
+    }
+
+    return outdata
+
+
+    
+
+
 # adds host="0.0.0.0" to make the server publicly available 
 app.run(host="0.0.0.0",port=8964)
