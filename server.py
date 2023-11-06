@@ -4,6 +4,8 @@ from flask import request
 
 import smtplib
 
+from datetime import datetime
+
 from random import seed 
 from random import choice
 
@@ -57,7 +59,8 @@ def passcode():
 
     email_address = request.args.get('email_address') 
 
-    seed(1)
+    seed(datetime.now().timestamp())
+
     my_passcode = [str(choice([i for i in range(10)])) for j in range(6)]
     my_passcode = "".join(my_passcode)
 
