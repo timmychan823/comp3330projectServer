@@ -21,22 +21,23 @@ def login():
         con.commit()"""
 
     # select from db
-    cursor = con.execute(f"SELECT email_address, password FROM User WHERE email_address=\"{email_address}\" AND password=\"{password}\";")
+    cursor = con.execute(f"SELECT user_id,email_address, password FROM User WHERE email_address=\"{email_address}\" AND password=\"{password}\";")
     userLoginData = []
 
     is_there_something_returned = False
     for row in cursor:
         is_there_something_returned = True
-        userLoginData.append([row[0],row[1]]) 
+        userLoginData.append([row[0],row[1],row[2]]) 
     if not is_there_something_returned:
-        userLoginData.append(["Not in database","Not in database"])
+        userLoginData.append(["Not in database","Not in database","Not in database"])
 
 
     con.close()
     outdata = {
-  
-        "returned_email_address": userLoginData[0][0],
-        "returned_password": userLoginData[0][1]
+        
+        "returned_user_id": userLoginData[0][0],
+        "returned_email_address": userLoginData[0][1],
+        "returned_password": userLoginData[0][2]
     }
 
     print(outdata)
